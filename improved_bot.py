@@ -1,10 +1,15 @@
 #This one has seen a lot of change.
 #First change was to modify it so that it can be converted to exe
-#Becuase people who are going to use this are not programers
-#second change was adding that json data file
+#Because people who are going to use this are not programers
+#second change was adding that json data file.
 #json file serves as data for user and password
 #if json file is not present the program will create it
 #and will, in future, ready user and password from it.
+#If json is present, it will just continue on to the rest of the code.
+#comand in prompt for converting it to exe ( note that chromedriver.exe is located
+#on C:\, change if needed, also the name of my script is ready.py )
+#pyinstaller -F --add-binary "C:\chromedriver.exe";"." ready.py
+
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -12,11 +17,11 @@ import json
 import os
 import os, sys
 
-def doesFileExists(filePathAndName):
-    return os.path.exists(filePathAndName)
+def where_json(file_name):
+    return os.path.exists(file_name)
   
-# Example
-if doesFileExists('data.json'):
+
+if where_json('data.json'):
     pass
         
 else:
